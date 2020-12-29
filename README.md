@@ -1,13 +1,10 @@
 🌍
-*[Čeština](README-cs.md) ∙ [Deutsch](README-de.md) ∙ [Ελληνικά](README-el.md) ∙ [English](README.md) ∙ [Español](README-es.md) ∙ [Français](README-fr.md) ∙ [Indonesia](README-id.md) ∙ [Italiano](README-it.md) ∙ [日本語](README-ja.md) ∙ [한국어](README-ko.md) ∙ [Português](README-pt.md) ∙ [Română](README-ro.md) ∙ [Русский](README-ru.md) ∙ [Slovenščina](README-sl.md) ∙ [Українська](README-uk.md) ∙ [简体中文](README-zh.md) ∙ [繁體中文](README-zh-Hant.md)*
+*[Čeština](README-cs.md) ∙ [Deutsch](README-de.md) ∙ [Ελληνικά](README-el.md) ∙ [English](README.md) ∙ [Español](README-es.md) ∙ [Français](README-fr.md) ∙ [Indonesia](README-id.md) ∙ [Italiano](README-it.md) ∙ [日本語](README-ja.md) ∙ [한국어](README-ko.md) ∙ [polski](README-pl.md) ∙ [Português](README-pt.md) ∙ [Română](README-ro.md) ∙ [Русский](README-ru.md) ∙ [Slovenščina](README-sl.md) ∙ [Українська](README-uk.md) ∙ [简体中文](README-zh.md) ∙ [繁體中文](README-zh-Hant.md)*
 
 
 # The Art of Command Line
 
-[![Ask a Question](https://img.shields.io/badge/%3f-Ask%20a%20Question-ff69b4.svg)](https://airtable.com/shrzMhx00YiIVAWJg)
-
-[![Join the chat at https://gitter.im/jlevy/the-art-of-command-line](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jlevy/the-art-of-command-line?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
+*Note: I'm planning to revise this and looking for a new co-author to help with expanding this into a more comprehensive guide. While it's very popular, it could be broader and a bit deeper. If you like to write and are close to being an expert on this material and willing to consider helping, please drop me a note at josh (0x40) holloway.com. –[jlevy](https://github.com/jlevy), [Holloway](https://www.holloway.com). Thank you!*
 
 - [Meta](#meta)
 - [Basics](#basics)
@@ -38,7 +35,7 @@ but it has since moved to GitHub, where people more talented than the original a
 
 Scope:
 
-- This guide is both for beginners and the experienced. The goals are *breadth* (everything important), *specificity* (give concrete examples of the most common case), and *brevity* (avoid things that aren't essential or digressions you can easily look up elsewhere). Every tip is essential in some situation or significantly saves time over alternatives.
+- This guide is for both beginners and experienced users. The goals are *breadth* (everything important), *specificity* (give concrete examples of the most common case), and *brevity* (avoid things that aren't essential or digressions you can easily look up elsewhere). Every tip is essential in some situation or significantly saves time over alternatives.
 - This is written for Linux, with the exception of the "[macOS only](#macos-only)" and "[Windows only](#windows-only)" sections. Many of the other items apply or can be installed on other Unices or macOS (or even Cygwin).
 - The focus is on interactive Bash, though many tips apply to other shells and to general Bash scripting.
 - It includes both "standard" Unix commands as well as ones that require special package installs -- so long as they are important enough to merit inclusion.
@@ -365,6 +362,11 @@ A few examples of piecing together commands:
       sort a b | uniq > c   # c is a union b
       sort a b | uniq -d > c   # c is a intersect b
       sort a b b | uniq -u > c   # c is set difference a - b
+```
+
+- Pretty-print two JSON files, normalizing their syntax, then coloring and paginating the result:
+```
+      diff <(jq --sort-keys . < file1.json) <(jq --sort-keys . < file2.json) | colordiff | less -R
 ```
 
 - Use `grep . *` to quickly examine the contents of all files in a directory (so each line is paired with the filename), or `head -100 *` (so each file has a heading). This can be useful for directories filled with config settings like those in `/sys`, `/proc`, `/etc`.
